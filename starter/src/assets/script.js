@@ -10,21 +10,21 @@
 */
 const products = [
   {
-    name: "jar of cherries",
+    name: "Jar of cherries",
     price: 4,
     quantity: 0,
     productId: 100,
     image: "images/cherry.jpg",
   },
   {
-    name: "carton of strawberries",
+    name: "Carton of strawberries",
     price: 5,
     quantity: 0,
     productId: 101,
     image: "images/strawberry.jpg",
   },
   {
-    name: "bag of oranges",
+    name: "Bag of oranges",
     price: 10,
     quantity: 0,
     productId: 102,
@@ -78,7 +78,7 @@ function decreaseQuantity(productId) {
     let product = getProductById(productId);
     product.quantity -= 1;
     if (product.quantity === 0) {
-        cart.pop(product);
+        removeProductFromCart(productId);
     }
 }
 /* Create a function named removeProductFromCart that takes in the productId as an argument
@@ -89,7 +89,8 @@ function decreaseQuantity(productId) {
 function removeProductFromCart(productId) {
     let product = getProductById(productId);
     product.quantity = 0;
-    cart.pop(product);
+    const productIndex = cart.indexOf;
+    cart.splice(productIndex, 1);
 }
 /* Create a function named cartTotal that has no parameters
   - cartTotal should iterate through the cart to get the total of all products
@@ -99,13 +100,14 @@ function cartTotal() {
   let tempTotal = 0
   for (let i = 0; i < cart.length; i++) {
     const item = cart[i];
-    tempTotal = item.price * item.quantity;
-  return cartTotal
+    tempTotal += item.price * item.quantity;
+  };
+  return tempTotal;
   }
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart() {
   cart = []
-}
+};
 /* Create a function named pay that takes in an amount as an argument
   - pay will return a negative number if there is a remaining balance
   - pay will return a positive number if money should be returned to customer
@@ -130,15 +132,13 @@ function pay(amount) {
 */
 
 module.exports = {
-   products,
-   cart,
-   addProductToCart,
-   increaseQuantity,
-   decreaseQuantity,
-   removeProductFromCart,
-   cartTotal,
-   pay, 
-   emptyCart,
-   /* Uncomment the following line if completing the currency converter bonus */
-   // currency
-}
+  products: products,
+  cart: cart,
+  addProductToCart: addProductToCart,
+  increaseQuantity: increaseQuantity,
+  decreaseQuantity: decreaseQuantity,
+  removeProductFromCart: removeProductFromCart,
+  cartTotal: cartTotal,
+  pay: pay,
+  emptyCart: emptyCart,
+};
