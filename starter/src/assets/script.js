@@ -10,25 +10,25 @@
 */
 const products = [
   {
-    name: "carton of cherries",
+    name: "jar of cherries",
     price: 4,
     quantity: 0,
     productId: 100,
-    image: "../images/cherry.jpg",
+    image: "images/cherry.jpg",
   },
   {
     name: "carton of strawberries",
     price: 5,
     quantity: 0,
     productId: 101,
-    image: "../images/strawberry.jpg",
+    image: "images/strawberry.jpg",
   },
   {
     name: "bag of oranges",
     price: 10,
     quantity: 0,
     productId: 102,
-    image: "../images/orange.jpg",
+    image: "images/orange.jpg",
   },
 ];
 /* Images provided in /images folder. All images from Unsplash.com
