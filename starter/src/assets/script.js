@@ -89,8 +89,7 @@ function decreaseQuantity(productId) {
 function removeProductFromCart(productId) {
     let product = getProductById(productId);
     product.quantity = 0;
-    const productIndex = cart.indexOf(product);
-    cart.splice(productIndex, 1);
+    cart.splice(cart.indexOf(product), 1);
 }
 /* Create a function named cartTotal that has no parameters
   - cartTotal should iterate through the cart to get the total of all products
