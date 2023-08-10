@@ -89,7 +89,7 @@ function decreaseQuantity(productId) {
 function removeProductFromCart(productId) {
     let product = getProductById(productId);
     product.quantity = 0;
-    const productIndex = cart.indexOf;
+    const productIndex = cart.indexOf(product);
     cart.splice(productIndex, 1);
 }
 /* Create a function named cartTotal that has no parameters
@@ -97,29 +97,33 @@ function removeProductFromCart(productId) {
   - cartTotal should return the sum of the products in the cart
 */
 function cartTotal() {
-  let tempTotal = 0
-  for (let i = 0; i < cart.length; i++) {
-    const item = cart[i];
-    tempTotal += item.price * item.quantity;
-  };
-  return tempTotal;
-  }
+  let total = 0;
+  cart.forEach(product => {
+    total += product.quantity * product.price
+});
+return total;
+}
 /* Create a function called emptyCart that empties the products from the cart */
 function emptyCart() {
   cart = []
-};
+}
 /* Create a function named pay that takes in an amount as an argument
   - pay will return a negative number if there is a remaining balance
   - pay will return a positive number if money should be returned to customer
 */
-let totalPaid = 0
+ // Variable to track the total amount paid
+let totalPaid = 0;
 function pay(amount) {
+   // Add the current payment amount to the totalPaid variable
   totalPaid += amount;
-  const currentTotal = cartTotal();
-  const difference = totalPaid - currentTotal;
+  let difference = totalPaid - cartTotal();
+  // Check if the remaining amount is greater than or equal to zero
   if (difference >= 0) {
+    // If so, reset the `totalPaid` to zero to prepare it for the next
+    // payment, as the current payment is enough to cover the `cartTotal`.
     totalPaid = 0;
   }
+  // Return the remaining (negative if payment is less than the cartTotal)
   return difference;
 }
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)*/
